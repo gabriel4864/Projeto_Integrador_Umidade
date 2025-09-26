@@ -6,7 +6,20 @@ import paho.mqtt.client as mqtt
 app = Flask('Umidade')
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://grupo7:Senai%40134@datascience-gp7.mysql.database.azure.com/db_umidade'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Senai%40134@127.0.0.1/db_umidade'
+
+# server_name = 'datascience-gp7.mysql.database.azure.com'
+# port = '3606'
+# username = 'grupo7'
+# password = 'Senai%40134'
+# database = 'db_umidade'
+
+# certificado = 'DigiCertGlobalRootG2.crt.pem'
+
+# uri = f"mysql://{username}:{password}@{server_name}:{port}/{database}"
+# ssl_certificado = f"?ssl_ca={certificado}"
+
+# app.config['SQLALCHEMY_DATABASE_URI'] = uri + ssl_certificado
 
 mybd = SQLAlchemy(app)
 

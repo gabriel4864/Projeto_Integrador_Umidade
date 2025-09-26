@@ -10,7 +10,23 @@ app = Flask('registro')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # Configura o SQLAlchemy para rastrear modificações dos objetos, o que não é recomendado para produção.
 # O SQLAlchemy cria e modifica todos os dados da nossa tabela de forma automatica 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Senai%40134@127.0.0.1/db_umidade'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Senai%40134@127.0.0.1/db_umidade'
+
+
+server_name = 'datascience-gp7.mysql.database.azure.com'
+port = '3306'
+username = 'grupo7'
+password = 'Senai%40134'
+database = 'db_umidade'
+
+certificado = 'DigiCertGlobalRootG2.crt.pem'
+
+uri = f"mysql://{username}:{password}@{server_name}:{port}/{database}"
+ssl_certificado = f"?ssl_ca={certificado}"
+
+app.config['SQLALCHEMY_DATABASE_URI'] = uri + ssl_certificado
+
+
 # Configura a URI de conexão com o banco de dados MySQL.
 # Senha -> senai@134, porém aqui a senha passa a ser -> senai%40134
 app.config['SQLALCHEMY_ECHO'] = True  # Habilita o log de SQLAlchemy
